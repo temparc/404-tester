@@ -1,6 +1,6 @@
 # 404 Link Tester
 
-This is a small utility that will check a list of absolute links from a CSV file and sort them into separate CSV files for 200 or 404 status codes. 
+This is a small utility that will check a list of absolute links from a CSV file and sort them into separate CSV files for 200 or 404 status codes. This utility will not follow redirects but can be adjusted to do so by removing 
 
 To get started, run: 
 
@@ -10,6 +10,10 @@ Then paste your links into `links.csv` and run:
 
 `python3 check_links.py`
 
+To follow redirects, use: 
+
+`check_links.py follow_redirects`
+
 ## 404s
 Will be saved to a CSV in `/results called 404.csv`
 
@@ -17,4 +21,4 @@ Will be saved to a CSV in `/results called 404.csv`
 Will be saved to a CSV in `/results called 200.csv`
 
 ## 3xx or Other Status Codes
-Are not saved to a CSV file but will be printed to stdout.
+Are not saved to a CSV file but will be printed to stdout when not using the `follow_redirects` argument.

@@ -2,15 +2,29 @@ import requests
 import csv
 from colors import status_colors
 import time
+import sys
+
 
 file_links = 'links.csv'
 file_notfound = 'results/404.csv'
 file_ok = 'results/200.csv';
+follow_redirects = False if len(sys.argv) <= 1 else sys.argv[1]
 
+
+# Get the HTTP status of a URL
+# @return int status_code
 def get_http_status(url):
-	r = requests.get(url, headers={"content-type":"text/html", "User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1"})
+
+	allow_redirects = False
+
+	if follow_redirects == 'follow_redirects':
+		allow_redirects = True
+
+	r = requests.get(url, headers={"content-type":"text/html", "User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1"}, allow_redirects=allow_redirects)
 	return r.status_code
 
+
+# Read/Write to CSVs
 with open(file_notfound, 'w', newline='') as notfound_file:
 	notfound_writer = csv.writer(notfound_file, delimiter=',')
 
