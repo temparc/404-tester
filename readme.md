@@ -1,6 +1,6 @@
 # 404 Link Tester
 
-This is a small utility that will check a list of absolute links from a CSV file and sort them into separate CSV files for 200 or 404 status codes. This utility will not follow redirects by default, but you can do so by passing the `follow_redirects` argument to the script.
+This is a small utility that will check a list of absolute links from a CSV file and save them to a new CSV file with their HTTP status code(s). This utility will not follow redirects by default, but you can do so by passing the `follow_redirects` argument to the script.
 
 To get started, run: 
 
